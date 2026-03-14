@@ -62,7 +62,7 @@ function About() {
                 education initiatives focused on disease prevention,
                 maternal and child health, family planning initiatives,
                 malnutrition, and hygiene—aiming to empower communities
-                to lead healthier lives.
+                to lead healthier lives hwwhwhwh.
               </p>
 
             </div>
