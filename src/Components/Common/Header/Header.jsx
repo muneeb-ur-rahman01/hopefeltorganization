@@ -83,7 +83,7 @@ function Header() {
       </div>
 
      <div className="overflow-hidden h-16 bg-[#1F7EC4] flex items-center">
-      <div className="whitespace-nowrap animate-slide text-2xl font-bold text-white">
+      <div className="whitespace-nowrap animate-marquee text-2xl font-bold text-white">
     WELCOME TO HOPEFELT FOUNDATION
        </div>
       </div>
