@@ -82,12 +82,10 @@ function Header() {
         </div>
       </div>
 
-      <div className="overflow-hidden h-16 bg-white flex justify-center items-center">
-        <div className="whitespace-nowrap animate-slideRight text-1xl font-bold text-gray-800 h-full w-full flex items-center bg-[#1F7EC4]">
-          <marquee className="font-bold text-2xl text-white">
-            WELCOME TO HOPEFELT FOUNDATION
-          </marquee>
-        </div>
+     <div className="overflow-hidden h-16 bg-[#1F7EC4] flex items-center">
+      <div className="whitespace-nowrap animate-slide text-2xl font-bold text-white">
+    WELCOME TO HOPEFELT FOUNDATION
+       </div>
       </div>
     </>
   );
