@@ -4,7 +4,7 @@ export default {
  theme: {
   extend: {
     animation: {
-      slide: "slide 2s linear infinite",
+      slide: "slide 10s linear infinite",
     },
     keyframes: {
       slide: {
