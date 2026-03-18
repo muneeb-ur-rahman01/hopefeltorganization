@@ -7,7 +7,7 @@ export default {
       marquee: "marquee 15s linear infinite",
     },
     keyframes: {
-      slide: {
+      marquee: {
         "0%": { transform: "translateX(100%)" },
         "100%": { transform: "translateX(-100%)" },
       },
