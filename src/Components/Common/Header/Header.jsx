@@ -82,11 +82,12 @@ function Header() {
         </div>
       </div>
 
-     <div className="overflow-hidden h-16 bg-[#1F7EC4] flex items-center">
-      <div className="whitespace-nowrap animate-marquee text-2xl font-bold text-white">
-    WELCOME TO HOPEFELT FOUNDATION
-       </div>
-      </div>
+      <div className="overflow-hidden h-16 bg-[#1F7EC4] flex items-center">
+  {/* The animate-slide class matches your tailwind config name */}
+  <div className="whitespace-nowrap animate-slide text-2xl font-bold text-white w-full">
+    WELCOME TO HOPEFELT FOUNDATION 
+  </div>
+</div>
     </>
   );
 }

@@ -4,10 +4,10 @@ export default {
  theme: {
   extend: {
     animation: {
-      marquee: "marquee 15s linear infinite",
+      slide: "slide 2s linear infinite",
     },
     keyframes: {
-      marquee: {
+      slide: {
         "0%": { transform: "translateX(100%)" },
         "100%": { transform: "translateX(-100%)" },
       },
