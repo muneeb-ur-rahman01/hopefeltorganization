@@ -4,72 +4,79 @@ import { FiSend, FiUser, FiMail, FiMessageSquare, FiMapPin, FiPhone, FiClock } f
 import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 
 function Contact() {
-
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden font-sans">
 
       {/* Header */}
-{/* Header */}
-<header className="w-full bg-[#4da6ff] shadow-md">
-  <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
+      <header className="w-full bg-[#4da6ff] shadow-md">
+        <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
 
-    {/* Logo */}
-    <div className="text-white text-sm sm:text-lg md:text-xl font-[Cambria] font-bold tracking-wide">
-      HOPEFELT FOUNDATION
-    </div>
+          {/* Logo */}
+          <div className="text-white text-sm sm:text-lg md:text-xl font-[Cambria] font-bold tracking-wide">
+            HOPEFELT FOUNDATION
+          </div>
 
-    {/* Desktop Links */}
-    <div className="hidden md:flex space-x-6">
-      <Link to="/" className="text-white font-semibold hover:text-gray-200">
-        Home
-      </Link>
-    </div>
+          {/* Desktop Links */}
+          <div className="hidden md:flex space-x-6">
+            <Link to="/" className="text-white font-semibold hover:text-gray-200">Home</Link>
+          </div>
 
-    {/* Mobile Button */}
-    <div className="md:hidden">
-      <button
-        onClick={() => setMenuOpen(true)}
-        className="text-white text-3xl"
+          {/* Mobile Button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="text-white text-3xl"
+            >
+              ☰
+            </button>
+          </div>
+
+        </div>
+      </header>
+
+      {/* MOBILE SIDE DRAWER WITH CURVE */}
+      <div
+        className={`fixed top-0 right-0 h-full w-[70%] bg-[#4da6ff] shadow-xl z-50 transform transition-transform duration-300
+        ${menuOpen ? "translate-x-0" : "translate-x-full"} rounded-l-3xl overflow-hidden`}
       >
-        ☰
-      </button>
-    </div>
+        {/* Close Button */}
+        <div className="flex justify-end p-4">
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="text-3xl text-white"
+          >
+            ✕
+          </button>
+        </div>
 
-  </div>
-</header>
+        {/* Menu Items */}
+        <div className="flex flex-col space-y-3 px-6 py-4">
+          {[
+            { name: "HOME", link: "/" },
+            { name: "ABOUT", link: "/About" },
+            { name: "CONTACT", link: "/Contact" },
+          ].map((item) => (
+            <Link
+              key={item.name}
+              to={item.link}
+              onClick={() => setMenuOpen(false)}
+              className="text-white text-base font-normal py-2 px-2 rounded hover:bg-blue-100 hover:text-[#1F7EC4] transition-colors"
+            >
+              {item.name}
+            </Link>
+          ))}
+        </div>
+      </div>
 
-{/* MOBILE SIDE DRAWER */}
-<div
-  className={`fixed top-0 right-0 h-full w-[70%] bg-[#4da6ff] shadow-lg transform transition-transform duration-300 z-50 
-  ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
->
-  {/* Close */}
-  <div className="flex justify-end p-4">
-    <button
-      onClick={() => setMenuOpen(false)}
-      className="text-3xl text-white"
-    >
-      ✕
-    </button>
-  </div>
-
-  {/* Menu Items */}
-  <div className="flex flex-col space-y-4 px-6 text-lg font-medium text-white">
-    <Link to="/" onClick={() => setMenuOpen(false)}>HOME</Link>
-    <Link to="/About" onClick={() => setMenuOpen(false)}>ABOUT</Link>
-    <Link to="/Contact" onClick={() => setMenuOpen(false)}>CONTACT</Link>
-  </div>
-</div>
-
-{/* Overlay */}
-{menuOpen && (
-  <div
-    className="fixed inset-0 bg-black bg-opacity-40 z-40"
-    onClick={() => setMenuOpen(false)}
-  ></div>
-)}
+      {/* Overlay */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-40 z-40"
+          onClick={() => setMenuOpen(false)}
+        ></div>
+      )}
 
       {/* Contact Section */}
       <section className="text-gray-800 bg-white body-font">
@@ -93,7 +100,6 @@ function Contact() {
                 <label className="leading-7 text-sm text-gray-700 flex items-center">
                   <FiUser className="mr-2 text-blue-500" /> Full Name
                 </label>
-
                 <input
                   type="text"
                   placeholder="Your name"
@@ -106,7 +112,6 @@ function Contact() {
                 <label className="leading-7 text-sm text-gray-700 flex items-center">
                   <FiMail className="mr-2 text-blue-500" /> Email
                 </label>
-
                 <input
                   type="email"
                   placeholder="your.email@example.com"
@@ -119,7 +124,6 @@ function Contact() {
                 <label className="leading-7 text-sm text-gray-700 flex items-center">
                   <FiMessageSquare className="mr-2 text-blue-500" /> Message
                 </label>
-
                 <textarea
                   placeholder="How can we assist you?"
                   className="w-full bg-gray-50 rounded border border-gray-300 focus:border-blue-400 focus:ring-1 focus:ring-blue-200 h-36 text-base outline-none text-gray-900 py-3 px-4 resize-none"
@@ -143,7 +147,6 @@ function Contact() {
             className="w-full lg:w-2/3 bg-white shadow-lg overflow-hidden p-12 flex flex-col"
             style={{ clipPath: "polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%)" }}
           >
-
             <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
               Contact Information
             </h2>
@@ -155,7 +158,6 @@ function Contact() {
                 <div className="bg-blue-500 rounded-md p-3">
                   <FiMapPin className="text-white text-xl" />
                 </div>
-
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">Our Location</h3>
                   <p className="mt-1 text-gray-700">
@@ -170,7 +172,6 @@ function Contact() {
                 <div className="bg-blue-500 rounded-md p-3">
                   <FiMail className="text-white text-xl" />
                 </div>
-
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">Email Us</h3>
                   <p className="mt-1 text-gray-700">
@@ -186,7 +187,6 @@ function Contact() {
                 <div className="bg-blue-500 rounded-md p-3">
                   <FiPhone className="text-white text-xl" />
                 </div>
-
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">Call Us</h3>
                   <p className="mt-1 text-gray-700">
@@ -202,7 +202,6 @@ function Contact() {
                 <div className="bg-blue-500 rounded-md p-3">
                   <FiClock className="text-white text-xl" />
                 </div>
-
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">Working Hours</h3>
                   <p className="mt-1 text-gray-700">

@@ -78,7 +78,6 @@ const Updates = () => {
               menuOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
           >
-            <h2 className="text-2xl font-bold text-white mb-6">Menu</h2>
             <Link 
               to="/" 
               className="text-white font-medium py-2 px-4 rounded-lg hover:bg-white hover:text-blue-600 transition-colors"

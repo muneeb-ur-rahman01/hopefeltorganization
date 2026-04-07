@@ -41,27 +41,15 @@ function Header() {
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             
             <div className="flex space-x-6">
-              <Link to="/" className="hover:text-[#7a8c74] font-medium">
-                HOME
-              </Link>
-              <Link to="/About" className="hover:text-[#7a8c74] font-medium">
-                ABOUT US
-              </Link>
-              <Link to="/Contact" className="hover:text-[#7a8c74] font-medium">
-                CONTACT US
-              </Link>
-              <Link to="/Updates" className="hover:text-[#7a8c74] font-medium">
-                UPDATES
-              </Link>
-              <Link to="/QuickDonate" className="hover:text-[#7a8c74] font-medium">
-                DONATE US
-              </Link>
+              <Link to="/" className="hover:text-[#7a8c74] font-medium">HOME</Link>
+              <Link to="/About" className="hover:text-[#7a8c74] font-medium">ABOUT US</Link>
+              <Link to="/Contact" className="hover:text-[#7a8c74] font-medium">CONTACT US</Link>
+              <Link to="/Updates" className="hover:text-[#7a8c74] font-medium">UPDATES</Link>
+              <Link to="/QuickDonate" className="hover:text-[#7a8c74] font-medium">DONATE US</Link>
             </div>
 
             <Link to="https://forms.gle/31qB1FEnQr3zbswq5">
-              <button className="bg-[#1F7EC4] text-white font-semibold py-2 px-8 rounded-full">
-                Join Us
-              </button>
+              <button className="bg-[#1F7EC4] text-white font-semibold py-2 px-8 rounded-full">Join Us</button>
             </Link>
           </div>
         </div>
@@ -69,10 +57,9 @@ function Header() {
 
       {/* MOBILE SIDE DRAWER */}
       <div
-        className={`fixed top-0 right-0 h-full w-[70%] bg-[#4da6ff] shadow-lg transform transition-transform duration-300 z-50 
+        className={`fixed top-0 right-0 h-full w-[70%] bg-[#4da6ff] shadow-lg transform transition-transform duration-300 z-50 rounded-l-3xl
         ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
-        
         {/* CLOSE BUTTON */}
         <div className="flex justify-end p-4">
           <button
@@ -84,15 +71,26 @@ function Header() {
         </div>
 
         {/* MENU ITEMS */}
-        <div className="flex flex-col space-y-4 px-6 text-lg font-medium text-white">
-          <Link to="/" onClick={() => setMenuOpen(false)}>HOME</Link>
-          <Link to="/About" onClick={() => setMenuOpen(false)}>ABOUT US</Link>
-          <Link to="/Contact" onClick={() => setMenuOpen(false)}>CONTACT US</Link>
-          <Link to="/Updates" onClick={() => setMenuOpen(false)}>UPDATES</Link>
-          <Link to="/QuickDonate" onClick={() => setMenuOpen(false)}>DONATE US</Link>
+        <div className="flex flex-col space-y-3 px-6">
+          {[
+            { name: "HOME", link: "/" },
+            { name: "ABOUT US", link: "/About" },
+            { name: "CONTACT US", link: "/Contact" },
+            { name: "UPDATES", link: "/Updates" },
+            { name: "DONATE US", link: "/QuickDonate" }
+          ].map((item) => (
+            <Link
+              key={item.name}
+              to={item.link}
+              onClick={() => setMenuOpen(false)}
+              className="text-white text-base font-medium py-2 px-2 rounded hover:bg-white hover:text-[#4da6ff] transition-colors"
+            >
+              {item.name}
+            </Link>
+          ))}
 
-          <Link to="https://forms.gle/31qB1FEnQr3zbswq5">
-            <button className="bg-white text-[#1F7EC4] py-3 w-full rounded-full mt-4 font-semibold text-lg">
+          <Link to="https://forms.gle/31qB1FEnQr3zbswq5" onClick={() => setMenuOpen(false)}>
+            <button className="bg-white text-[#1F7EC4] py-2 w-full rounded-full mt-4 font-semibold text-base hover:bg-gray-100 transition-colors">
               Join Us
             </button>
           </Link>
@@ -109,7 +107,7 @@ function Header() {
 
       {/* BOTTOM SCROLL TEXT */}
       <div className="overflow-hidden h-16 bg-[#1F7EC4] flex items-center font-sans">
-        <div className="whitespace-nowrap animate-slide text-2xl font-bold text-white w-full">
+        <div className="whitespace-nowrap animate-slide text-xl font-bold text-white w-full">
           WELCOME TO HOPEFELT FOUNDATION
         </div>
       </div>

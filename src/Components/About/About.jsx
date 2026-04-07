@@ -38,12 +38,12 @@ function About() {
         </div>
       </div>
 
-      {/* MOBILE SIDE DRAWER */}
+      {/* MOBILE SIDE DRAWER WITH CURVE */}
       <div
-        className={`fixed top-0 right-0 h-full w-[70%] bg-[#4da6ff] shadow-lg transform transition-transform duration-300 z-50 
+        className={`fixed top-0 right-0 h-full w-[70%] bg-[#4da6ff] shadow-lg transform transition-transform duration-300 z-50 rounded-l-3xl
         ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
-        {/* Close */}
+        {/* Close Button */}
         <div className="flex justify-end p-4">
           <button
             onClick={() => setMenuOpen(false)}
@@ -54,16 +54,21 @@ function About() {
         </div>
 
         {/* Menu Items */}
-        <div className="flex flex-col space-y-4 px-6 text-lg font-medium text-white">
-          <Link to="/" onClick={() => setMenuOpen(false)}>
-            HOME
-          </Link>
-          <Link to="/About" onClick={() => setMenuOpen(false)}>
-            ABOUT US
-          </Link>
-          <Link to="/Contact" onClick={() => setMenuOpen(false)}>
-            CONTACT
-          </Link>
+        <div className="flex flex-col space-y-3 px-6">
+          {[
+            { name: "HOME", link: "/" },
+            { name: "ABOUT US", link: "/About" },
+            { name: "CONTACT", link: "/Contact" },
+          ].map((item) => (
+            <Link
+              key={item.name}
+              to={item.link}
+              onClick={() => setMenuOpen(false)}
+              className="text-white text-base font-medium py-2 px-2 rounded hover:bg-white hover:text-[#4da6ff] transition-colors"
+            >
+              {item.name}
+            </Link>
+          ))}
         </div>
       </div>
 
