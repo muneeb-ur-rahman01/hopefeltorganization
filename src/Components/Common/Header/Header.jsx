@@ -28,7 +28,7 @@ function Header() {
             <div className="md:hidden">
               <button
                 onClick={() => setMenuOpen(true)}
-                className="text-white text-3xl"
+                className="text-white text-2xl"
               >
                 ☰
               </button>
@@ -40,7 +40,7 @@ function Header() {
         <div className="w-full bg-gray-200 hidden md:block">
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             
-            <div className="flex space-x-6">
+            <div className="flex space-x-6 text-sm md:text-base">
               <Link to="/" className="hover:text-[#7a8c74] font-medium">HOME</Link>
               <Link to="/About" className="hover:text-[#7a8c74] font-medium">ABOUT US</Link>
               <Link to="/Contact" className="hover:text-[#7a8c74] font-medium">CONTACT US</Link>
@@ -49,7 +49,9 @@ function Header() {
             </div>
 
             <Link to="https://forms.gle/31qB1FEnQr3zbswq5">
-              <button className="bg-[#1F7EC4] text-white font-semibold py-2 px-8 rounded-full">Join Us</button>
+              <button className="bg-[#1F7EC4] text-white font-semibold py-2 px-6 rounded-full text-sm md:text-base">
+                Join Us
+              </button>
             </Link>
           </div>
         </div>
@@ -61,18 +63,18 @@ function Header() {
         ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         {/* CLOSE BUTTON */}
-        <div className="flex justify-end p-4">
+        <div className="flex justify-end p-3">
           <button
             onClick={() => setMenuOpen(false)}
-            className="text-3xl text-white"
+            className="text-2xl text-white"
           >
             ✕
           </button>
         </div>
 
         {/* MENU ITEMS */}
-        <div className="flex flex-col space-y-3 px-6">
-          {[
+        <div className="flex flex-col space-y-2 px-6 py-3">
+          {[ 
             { name: "HOME", link: "/" },
             { name: "ABOUT US", link: "/About" },
             { name: "CONTACT US", link: "/Contact" },
@@ -83,14 +85,14 @@ function Header() {
               key={item.name}
               to={item.link}
               onClick={() => setMenuOpen(false)}
-              className="text-white text-base font-medium py-2 px-2 rounded hover:bg-white hover:text-[#4da6ff] transition-colors"
+              className="text-white text-sm font-medium py-1.5 px-2 rounded hover:bg-white hover:text-[#4da6ff] transition-colors"
             >
               {item.name}
             </Link>
           ))}
 
           <Link to="https://forms.gle/31qB1FEnQr3zbswq5" onClick={() => setMenuOpen(false)}>
-            <button className="bg-white text-[#1F7EC4] py-2 w-full rounded-full mt-4 font-semibold text-base hover:bg-gray-100 transition-colors">
+            <button className="bg-white text-[#1F7EC4] py-2 w-full rounded-full mt-3 font-medium text-sm hover:bg-gray-100 transition-colors">
               Join Us
             </button>
           </Link>
@@ -107,7 +109,7 @@ function Header() {
 
       {/* BOTTOM SCROLL TEXT */}
       <div className="overflow-hidden h-16 bg-[#1F7EC4] flex items-center font-sans">
-        <div className="whitespace-nowrap animate-slide text-xl font-bold text-white w-full">
+        <div className="whitespace-nowrap animate-slide text-lg font-bold text-white w-full">
           WELCOME TO HOPEFELT FOUNDATION
         </div>
       </div>

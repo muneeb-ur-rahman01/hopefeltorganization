@@ -52,7 +52,7 @@ function Contact() {
         </div>
 
         {/* Menu Items */}
-        <div className="flex flex-col space-y-3 px-6 py-4">
+        <div className="flex flex-col font-medium space-y-3 px-6 py-4">
           {[
             { name: "HOME", link: "/" },
             { name: "ABOUT", link: "/About" },
