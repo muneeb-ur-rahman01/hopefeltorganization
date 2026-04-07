@@ -6,7 +6,6 @@ const QuickDonate = () => {
   const [activeTab, setActiveTab] = useState('Ramzan Donation');
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Map each category to a Google Form URL
   const categoryLinks = {
     "Ramzan Donation": "https://forms.gle/S5k1XDXsRJkLaLHp9",
     "General": "https://forms.gle/S5k1XDXsRJkLaLHp9",
@@ -18,7 +17,6 @@ const QuickDonate = () => {
 
   const categories = Object.keys(categoryLinks);
 
-  // Open the form in a new tab
   const handleDonateClick = () => {
     const url = categoryLinks[activeTab];
     if (url) {
@@ -30,13 +28,12 @@ const QuickDonate = () => {
     <div className="min-h-screen bg-gray-50 font-sans text-gray-800 flex flex-col items-center relative">
 
       {/* Navigation / Header */}
-      <header className="w-full bg-[#4da6ff] shadow-md">
+      <header className="w-full bg-[#4da6ff] shadow-md relative z-10">
         <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
           <div className="text-white text-1xl font-[Cambria] font-bold tracking-wide">
             HOPEFELT FOUNDATION
           </div>
 
-          {/* Desktop Links */}
           <div className="hidden md:flex space-x-6">
             <Link to="/" className="text-white font-semibold hover:text-gray-200 transition-colors">
               Home
@@ -53,21 +50,50 @@ const QuickDonate = () => {
             </button>
           </div>
         </div>
-
-        {/* Mobile Links */}
-        {menuOpen && (
-          <div className="md:hidden bg-[#3a90c1] w-full px-6 py-4 flex flex-col space-y-3">
-            <Link to="/" className="text-white font-semibold hover:text-gray-200 transition-colors">
-              Home
-            </Link>
-          </div>
-        )}
       </header>
+
+      {/* Mobile Menu Overlay */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-30 z-40 transition-opacity duration-300"
+          onClick={() => setMenuOpen(false)}
+        ></div>
+      )}
+
+      {/* Mobile Menu Drawer */}
+      <div
+        className={`fixed top-0 right-0 h-full w-64 bg-[#4da6ff] shadow-2xl rounded-l-3xl z-50 p-6 flex flex-col space-y-6 transform transition-transform duration-300 font-sans ${
+          menuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <h2 className="text-2xl font-bold text-white mb-6">Menu</h2>
+        <Link 
+          to="/" 
+          className="text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-white hover:text-[#4da6ff] transition-colors"
+          onClick={() => setMenuOpen(false)}
+        >
+          Home
+        </Link>
+        <Link 
+          to="/about" 
+          className="text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-white hover:text-[#4da6ff] transition-colors"
+          onClick={() => setMenuOpen(false)}
+        >
+          About Us
+        </Link>
+        <Link 
+          to="/contact" 
+          className="text-white text-lg font-medium py-2 px-4 rounded-lg hover:bg-white hover:text-[#4da6ff] transition-colors"
+          onClick={() => setMenuOpen(false)}
+        >
+          Contact
+        </Link>
+      </div>
 
       {/* Page Header */}
       <div className="text-center mt-12 mb-12 px-4">
         <h1 className="text-5xl sm:text-6xl font-bold leading-tight">
-          Quick <span className="text-green-500">Donate</span>
+          Quick <span className="text-[#4da6ff]">Donate</span>
         </h1>
         <p className="text-gray-500 mt-4 text-lg sm:text-xl max-w-md mx-auto leading-relaxed">
           Choose your cause and make an impact today. Every donation counts!
@@ -82,7 +108,7 @@ const QuickDonate = () => {
             onClick={() => setActiveTab(cat)}
             className={`py-3 px-4 rounded-full text-sm sm:text-base font-semibold transition-all duration-300 ${
               activeTab === cat
-                ? 'bg-green-500 text-white shadow-lg shadow-green-200'
+                ? 'bg-[#4da6ff] text-white shadow-lg shadow-blue-200'
                 : 'bg-white text-gray-700 hover:bg-gray-100'
             }`}
           >
@@ -108,15 +134,14 @@ const QuickDonate = () => {
                 Make your {activeTab} 2026 a source of mercy and reward.
               </p>
             </div>
-            <span className="bg-green-500 text-xs sm:text-sm font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            <span className="bg-[#4da6ff] text-xs sm:text-sm font-bold px-3 py-1 rounded-full uppercase tracking-wider">
               {activeTab.split(" ")[0]}
             </span>
           </div>
 
-          {/* Donate Now button opens Google Form */}
           <button
             onClick={handleDonateClick}
-            className="bg-white text-green-600 font-bold py-3 px-8 rounded-2xl self-center shadow-lg active:scale-95 transition-transform mt-6"
+            className="bg-white text-[#1F7EC4] font-bold py-3 px-8 rounded-2xl self-center shadow-lg active:scale-95 transition-transform mt-6"
           >
             DONATE NOW
           </button>
@@ -128,7 +153,7 @@ const QuickDonate = () => {
         href="https://wa.me/923710137556" 
         target="_blank" 
         rel="noopener noreferrer"
-        className="fixed bottom-24 right-6 bg-green-500 text-white p-4 rounded-full shadow-xl hover:bg-green-600 transition-colors z-50"
+        className="fixed bottom-24 right-6 bg-[#4da6ff] text-white p-4 rounded-full shadow-xl hover:bg-[#1F7EC4] transition-colors z-50"
       >
         <MessageCircle size={28} />
       </a>

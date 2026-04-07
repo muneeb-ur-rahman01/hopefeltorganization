@@ -1,29 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import e1 from "../../assets/Images/e1.jpg";
 
 function About() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className="w-full min-h-screen overflow-x-hidden">
+    <div className="w-full min-h-screen overflow-x-hidden font-sans">
 
       {/* Header */}
       <div className="w-full bg-[#4da6ff] py-4 px-4 sm:px-6 shadow-lg">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           
-          <div className="text-white text-1xl sm:text-2xl md:text-1xl font-[Cambria] font-bold tracking-wide">
+          <div className="text-white text-lg sm:text-xl font-bold tracking-wide">
             HOPEFELT FOUNDATION
           </div>
 
-          <div className="space-x-4">
+          {/* Desktop Button */}
+          <div className="hidden md:block">
             <Link to="/">
-                                    <button className="bg-[#1F7EC4] text-white font-semibold py-2 px-8 rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 border-2 border-white">
-                                      Home
-                                    </button>
-                                  </Link>
+              <button className="bg-[#1F7EC4] text-white font-semibold py-2 px-6 rounded-full border-2 border-white">
+                Home
+              </button>
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="text-white text-3xl"
+            >
+              ☰
+            </button>
           </div>
 
         </div>
       </div>
+
+      {/* MOBILE SIDE DRAWER */}
+      <div
+        className={`fixed top-0 right-0 h-full w-[70%] bg-[#4da6ff] shadow-lg transform transition-transform duration-300 z-50 
+        ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
+      >
+        {/* Close */}
+        <div className="flex justify-end p-4">
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="text-3xl text-white"
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* Menu Items */}
+        <div className="flex flex-col space-y-4 px-6 text-lg font-medium text-white">
+          <Link to="/" onClick={() => setMenuOpen(false)}>
+            HOME
+          </Link>
+          <Link to="/About" onClick={() => setMenuOpen(false)}>
+            ABOUT US
+          </Link>
+          <Link to="/Contact" onClick={() => setMenuOpen(false)}>
+            CONTACT
+          </Link>
+        </div>
+      </div>
+
+      {/* Overlay */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-40 z-40"
+          onClick={() => setMenuOpen(false)}
+        ></div>
+      )}
 
       {/* About Section */}
       <section className="text-gray-600 bg-white body-font">

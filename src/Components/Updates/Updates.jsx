@@ -41,14 +41,18 @@ const Updates = () => {
         <div className="max-w-7xl mx-auto">
 
           {/* Navbar */}
-          <header className="w-full bg-[#4da6ff] shadow-md mb-12 rounded-xl">
+          <header className="w-full bg-[#4da6ff] shadow-md mb-12 rounded-xl relative z-10">
             <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-4 sm:px-6 md:px-6">
               <div className="text-white text-lg sm:text-xl md:text-2xl font-[Cambria] font-bold tracking-wide truncate max-w-[70%]">
                 HOPEFELT FOUNDATION
               </div>
+
+              {/* Desktop Menu */}
               <div className="hidden md:flex space-x-6">
                 <Link to="/" className="text-white font-semibold hover:text-gray-200 transition-colors">Home</Link>
               </div>
+
+              {/* Mobile Menu Button */}
               <div className="md:hidden ml-2">
                 <button 
                   onClick={() => setMenuOpen(!menuOpen)}
@@ -58,12 +62,45 @@ const Updates = () => {
                 </button>
               </div>
             </div>
-            {menuOpen && (
-              <div className="md:hidden bg-[#3a90c1] w-full px-4 py-4 flex flex-col space-y-3 rounded-b-xl">
-                <Link to="/" className="text-white font-semibold hover:text-gray-200 transition-colors">Home</Link>
-              </div>
-            )}
           </header>
+
+          {/* Mobile Menu Overlay */}
+          {menuOpen && (
+            <div
+              className="fixed inset-0 bg-black bg-opacity-30 z-40 transition-opacity duration-300"
+              onClick={() => setMenuOpen(false)}
+            ></div>
+          )}
+
+          {/* Mobile Menu Drawer */}
+          <div
+            className={`fixed top-0 right-0 h-full w-64 bg-gradient-to-b from-[#4da6ff] to-[#80c1ff] shadow-2xl rounded-l-3xl z-50 p-6 flex flex-col space-y-6 transform transition-transform duration-300 font-sans ${
+              menuOpen ? 'translate-x-0' : 'translate-x-full'
+            }`}
+          >
+            <h2 className="text-2xl font-bold text-white mb-6">Menu</h2>
+            <Link 
+              to="/" 
+              className="text-white font-medium py-2 px-4 rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
+              onClick={() => setMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link 
+              to="/about" 
+              className="text-white font-medium py-2 px-4 rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
+              onClick={() => setMenuOpen(false)}
+            >
+              About Us
+            </Link>
+            <Link 
+              to="/contact" 
+              className="text-white font-medium py-2 px-4 rounded-lg hover:bg-white hover:text-blue-600 transition-colors"
+              onClick={() => setMenuOpen(false)}
+            >
+              Contact
+            </Link>
+          </div>
 
           {/* Page Header */}
           <header className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">

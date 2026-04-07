@@ -11,49 +11,65 @@ function Contact() {
     <div className="w-full overflow-hidden">
 
       {/* Header */}
-      <header className="w-full bg-[#4da6ff] shadow-md">
-        <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
+{/* Header */}
+<header className="w-full bg-[#4da6ff] shadow-md">
+  <div className="max-w-6xl mx-auto flex justify-between items-center py-4 px-6">
 
-          {/* Logo / Title */}
-          <div className="text-white text-sm sm:text-lg md:text-xl font-[Cambria] font-bold tracking-wide">
-            HOPEFELT FOUNDATION
-          </div>
+    {/* Logo */}
+    <div className="text-white text-sm sm:text-lg md:text-xl font-[Cambria] font-bold tracking-wide">
+      HOPEFELT FOUNDATION
+    </div>
 
-          {/* Desktop Links */}
-          <div className="hidden md:flex space-x-6">
-            <Link
-              to="/"
-              className="text-white font-semibold hover:text-gray-200 transition-colors"
-            >
-              Home
-            </Link>
-          </div>
+    {/* Desktop Links */}
+    <div className="hidden md:flex space-x-6">
+      <Link to="/" className="text-white font-semibold hover:text-gray-200">
+        Home
+      </Link>
+    </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="text-white text-3xl focus:outline-none"
-            >
-              {menuOpen ? "✕" : "☰"}
-            </button>
-          </div>
+    {/* Mobile Button */}
+    <div className="md:hidden">
+      <button
+        onClick={() => setMenuOpen(true)}
+        className="text-white text-3xl"
+      >
+        ☰
+      </button>
+    </div>
 
-        </div>
+  </div>
+</header>
 
-        {/* Mobile Links */}
-        {menuOpen && (
-          <div className="md:hidden bg-[#3a90c1] w-full px-6 py-4 flex flex-col space-y-3">
-            <Link
-              to="/"
-              className="text-white font-semibold hover:text-gray-200 transition-colors"
-              onClick={() => setMenuOpen(false)}
-            >
-              Home
-            </Link>
-          </div>
-        )}
-      </header>
+{/* MOBILE SIDE DRAWER */}
+<div
+  className={`fixed top-0 right-0 h-full w-[70%] bg-[#4da6ff] shadow-lg transform transition-transform duration-300 z-50 
+  ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
+>
+  {/* Close */}
+  <div className="flex justify-end p-4">
+    <button
+      onClick={() => setMenuOpen(false)}
+      className="text-3xl text-white"
+    >
+      ✕
+    </button>
+  </div>
+
+  {/* Menu Items */}
+  <div className="flex flex-col space-y-4 px-6 text-lg font-medium text-white">
+    <Link to="/" onClick={() => setMenuOpen(false)}>HOME</Link>
+    <Link to="/About" onClick={() => setMenuOpen(false)}>ABOUT</Link>
+    <Link to="/Contact" onClick={() => setMenuOpen(false)}>CONTACT</Link>
+  </div>
+</div>
+
+{/* Overlay */}
+{menuOpen && (
+  <div
+    className="fixed inset-0 bg-black bg-opacity-40 z-40"
+    onClick={() => setMenuOpen(false)}
+  ></div>
+)}
 
       {/* Contact Section */}
       <section className="text-gray-800 bg-white body-font">
