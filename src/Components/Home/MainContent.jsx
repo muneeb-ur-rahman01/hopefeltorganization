@@ -6,86 +6,93 @@ import Alishba from "../../assets/Images/Alishba.jpeg"
 import Afrah from '../../assets/Images/Afrah.jpg'
 
 function MainContent() {
+  const founders = [
+    { name: "Afrah Sadia", role: "Founder", img: Afrah },
+    { name: "Alishba Noor", role: "Co-Founder", img: Alishba },
+  ];
+
+  const team = [
+    { name: "Usama Bin Zahid", role: "Content Creator | Operational Team Member", img: osama },
+    { name: "Muhammad Rizwan", role: "Operation Team Member", img: Rizwan },
+    { name: "Sharjeel", role: "Operation Team Member", img: Sharjeel },
+  ];
+
   return (
-    <>
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
+    <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto px-4">
 
-          {/* Heading */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900">EXECUTIVE DIRECTORS</h2>
-          </div>
-
-          {/* Founder Level */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-3xl mx-auto text-center mb-16">
-
-           
-
-             <div className="p-6 rounded-xl shadow-lg hover:shadow-2xl transition">
-              <img
-                className="w-40 h-40 mx-auto rounded-full object-cover shadow-xl border-4 border-white"
-               src={Afrah}
-               alt=""
-             />
-             <h3 className="mt-6 text-2xl font-bold">Afrah Sadia</h3>
-             <p className="text-gray-600">Founder</p>
-            </div>
-
-             <div className="p-6 rounded-xl shadow-lg hover:shadow-2xl transition">
-                 <img
-                 className="w-40 h-40 mx-auto rounded-full object-cover shadow-xl border-4 border-white"
-                  src={Alishba}
-                  alt=""
-             />
-             <h3 className="mt-6 text-2xl font-bold">Alishba Noor</h3>
-                <p className="text-gray-600">Co-Founder</p>
-             </div>
-
-            </div>
-          {/* Divider */}
-          <div className="w-24 h-1 bg-gray-300 mx-auto mb-12"></div>
-
-          {/* Team Members */}
-           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900">OUR TEAM</h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 text-center">
-
-            <div className="p-6 rounded-xl shadow-lg hover:shadow-2xl transition">
-              <img
-                className="w-32 h-32 mx-auto rounded-full object-cover"
-                src={osama}
-                alt=""
-              />
-              <h3 className="mt-5 text-xl font-bold">Usama Bin Zahid</h3>
-              <p className="text-gray-600">Content Creator  | Operational Team Member</p>
-            </div>
-
-            <div className="p-6 rounded-xl shadow-lg hover:shadow-2xl transition">
-              <img
-                className="w-32 h-32 mx-auto rounded-full object-cover"
-                src={Rizwan}
-                alt=""
-              />
-              <h3 className="mt-5 text-xl font-bold">Muhammad Rizwan</h3>
-              <p className="text-gray-600">Operation Team Member</p>
-            </div>
-
-            <div className="p-6 rounded-xl shadow-lg hover:shadow-2xl transition">
-              <img
-                className="w-32 h-32 mx-auto rounded-full object-cover"
-                src={Sharjeel}
-                alt=""
-              />
-              <h3 className="mt-5 text-xl font-bold">Sharjeel</h3>
-              <p className="text-gray-600">Operation Team Member</p>
-            </div>  
-
-          </div>
-
+        {/* Heading */}
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-wide">
+            Executive Directors
+          </h2>
+          <p className="text-gray-500 mt-2 text-sm md:text-base">
+            Meet the visionaries behind our organization
+          </p>
         </div>
-      </section>
-    </>
+
+        {/* Founder Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+          {founders.map((person, index) => (
+            <div
+              key={index}
+              className="group p-6 rounded-2xl bg-white shadow-md hover:shadow-2xl transition duration-300 transform hover:-translate-y-2"
+            >
+              <div className="relative">
+                <img
+                  src={person.img}
+                  alt={person.name}
+                  className="w-36 h-36 mx-auto rounded-full object-cover border-4 border-white shadow-lg"
+                />
+                <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition">
+                  {person.role}
+                </span>
+              </div>
+              <h3 className="mt-6 text-xl md:text-2xl font-bold text-center">
+                {person.name}
+              </h3>
+              <p className="text-gray-500 text-center mt-1">{person.role}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Divider */}
+        <div className="w-20 h-1 bg-gradient-to-r from-gray-300 to-gray-500 mx-auto mb-12 rounded"></div>
+
+        {/* Team Heading */}
+        <div className="text-center mb-14">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-wide">
+            Our Team
+          </h2>
+          <p className="text-gray-500 mt-2 text-sm md:text-base">
+            The people who make everything happen
+          </p>
+        </div>
+
+        {/* Team Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          {team.map((member, index) => (
+            <div
+              key={index}
+              className="group p-6 rounded-2xl bg-white shadow-md hover:shadow-xl transition duration-300 hover:-translate-y-2"
+            >
+              <img
+                src={member.img}
+                alt={member.name}
+                className="w-28 h-28 mx-auto rounded-full object-cover border-2 border-gray-200 group-hover:scale-105 transition"
+              />
+              <h3 className="mt-5 text-lg md:text-xl font-semibold text-center">
+                {member.name}
+              </h3>
+              <p className="text-gray-500 text-sm text-center mt-1 leading-snug">
+                {member.role}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
   );
 }
 
